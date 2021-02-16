@@ -53,7 +53,3 @@ class Deck:
             print(f"Error drawing card: {err}")
         
         
-
-# deck = Deck.load()
-# card = deck.draw_card()    
-# print(deck.deck_id, deck.remaining_cards, card.name, card.points)
