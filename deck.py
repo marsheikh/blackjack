@@ -1,10 +1,12 @@
-import card 
+from card import Card
+from constants import suits_to_icons, names_to_shorthand
 import requests 
 
 class Deck:
     def __init__(self, deck_id, remaining_cards):
         self.deck_id = deck_id
         self.remaining_cards = remaining_cards
+        self.shuffle()
 
     @classmethod
     def load(cls): 
@@ -38,15 +40,20 @@ class Deck:
             list_of_drawn_cards = values["cards"]
 
             drawn_card = next((card for card in list_of_drawn_cards if card["value"]), None) 
-            points = calculate_points(drawn_card["value"])
-            new_card = card.Card(   self.deck_id,
-                                    drawn_card["value"],
-                                    points,
-                                    drawn_card["suit"])
+            points = Card.calculate_points(0, drawn_card["value"])
+            suit = suits_to_icons[drawn_card["suit"]]
 
+            shorthand_name = names_to_shorthand[drawn_card["value"]]
+            new_card = Card(   self.deck_id,
+                                    shorthand_name,
+                                    points,
+                                    suit)
+            return new_card
         except Exception as err: 
             print(f"Error drawing card: {err}")
+        
+        
 
-deck = Deck.load()
-
-print(deck.deck_id, deck.remaining_cards)
+# deck = Deck.load()
+# card = deck.draw_card()    
+# print(deck.deck_id, deck.remaining_cards, card.name, card.points)
