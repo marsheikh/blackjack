@@ -2,14 +2,8 @@ import card
 from player import Player
 from constants import house, player
 from deck import Deck
-import os
-
-# os.system("clear")
 
 def print_intro():
-    # print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*")
-    # print("Welcome to Swyft Blackjack")
-    # print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*")
     print("Welcome to:")
     print("""
     
@@ -74,13 +68,6 @@ def new_game():
 
 def print_hands(dealer, player_1):
     # if i had more time, i'd make this look prettier and avoid having to pass dealer and player
-
-    # print(""" 
-    # _   _   _   _   _   _  
-    # / \ / \ / \ / \ / \ / \ 
-    # ( D | e | a | l | e | r )
-    # \_/ \_/ \_/ \_/ \_/ \_/ 
-    # """)
 
     print("-----Dealer-----")
     dealer.print_hand()
